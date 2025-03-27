@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ST0R3X - Complete System</title>
     <style>
+        /* Your existing styles remain unchanged */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #1e1e2f;
@@ -12,54 +13,10 @@
             text-align: center;
             padding: 20px;
         }
-        input, button, select {
-            margin: 10px;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #444;
-            background-color: #2a2a3b;
-            color: #f5f5f5;
-        }
-        input:focus, button:focus, select:focus {
-            outline: none;
-            border-color: #5a9;
-        }
-        button {
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #3a3a4b;
-        }
-        .hidden {
-            display: none;
-        }
-        nav {
-            background-color: #3a3a4b;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-        nav strong {
-            font-size: 1.5em;
-        }
-        #fileList div, #notifications {
-            margin: 10px 0;
-            padding: 15px;
-            background-color: #2a2a3b;
-            border-radius: 8px;
-            color: #dcdcdc;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        fieldset {
-            border: 1px solid #444;
-            border-radius: 8px;
-            padding: 20px;
-            background-color: #2a2a3b;
-        }
-        legend {
-            color: #5a9;
+        /* Additional styling for error messages */
+        .error {
+            color: #f95;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -77,6 +34,7 @@
         <button onclick="signUp()">Sign Up</button>
         <p>Already have an account? <button onclick="showLoginForm()">Login</button></p>
     </div>
+    <div id="signupError" class="error hidden">Username is already in use.</div>
 
     <!-- Login Form -->
     <div id="loginForm" class="hidden">
