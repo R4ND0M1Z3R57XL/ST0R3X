@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ST0R3X - Complete System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e2f;
+            color: #f5f5f5;
+            text-align: center;
+            padding: 20px;
+        }
+        input, button, select {
+            margin: 10px;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background-color: #2a2a3b;
+            color: #f5f5f5;
+        }
+        input:focus, button:focus, select:focus {
+            outline: none;
+            border-color: #5a9;
+        }
+        button {
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #3a3a4b;
+        }
+        .hidden {
+            display: none;
+        }
+        nav {
+            background-color: #3a3a4b;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        nav strong {
+            font-size: 1.5em;
+        }
+        #fileList div, #notifications {
+            margin: 10px 0;
+            padding: 15px;
+            background-color: #2a2a3b;
+            border-radius: 8px;
+            color: #dcdcdc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        fieldset {
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #2a2a3b;
+        }
+        legend {
+            color: #5a9;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <strong>ST0R3X - Your Workspace</strong>
+        <button onclick="logout()" id="logoutButton" class="hidden">Logout</button>
+    </nav>
+
+    <!-- Sign-Up Form -->
+    <div id="signupForm">
+        <h2>Sign Up</h2>
+        <input type="text" id="signupUsername" placeholder="Enter a username" required>
+        <input type="password" id="signupPassword" placeholder="Enter a password" required>
+        <button onclick="signUp()">Sign Up</button>
+        <p>Already have an account? <button onclick="showLoginForm()">Login</button></p>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginForm" class="hidden">
+        <h2>Login</h2>
+        <input type="text" id="loginUsername" placeholder="Enter your username" required>
+        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+        <button onclick="login()">Login</button>
+        <p>Don't have an account? <button onclick="showSignupForm()">Sign Up</button></p>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" class="hidden">
+        <h2>Welcome, <span id="displayUsername"></span>!</h2>
+        <form>
+            <fieldset>
+                <legend style="font-size: 200%;">ST0R3X</legend>
+                <!-- File Upload Section -->
+                <input type="file" id="fileInput" multiple>
+                <button type="button" onclick="uploadFiles()">Upload Files</button>
+                <button type="button" onclick="saveFiles()">Save Files</button>
+                <br><br>
+
+                <!-- Action Dropdown -->
+                <select id="actionDropdown">
+                    <option value="">Select an Action</option>
+                    <option value="delete">Delete Selected Files</option>
+                    <option value="export">Export Selected Files</option>
+                    <option value="rename">Rename Selected File</option>
+                    <option value="clear">Clear All Notifications</option>
+                </select>
+                <button type="button" onclick="performAction()">Apply Action</button>
+                <br><br>
+
+                <!-- Sorting Dropdown -->
+                <select id="sortDropdown" onchange="sortFiles(this.value)">
+                    <option value="">Sort by:</option>
+                    <option value="name">Name</option>
+                    <option value="size">Size</option>
+                    <option value="date">Date Added</option>
+                </select>
+                <br><br>
+
+                <!-- Notifications -->
+                <div id="notifications">Notifications will appear here.</div>
+                <br>
+
+                <!-- File List -->
+                <div id="fileList"></div>
+            </fieldset>
+        </form>
+    </div>
+    <script src="storex.js"></script>
+</body>
+</html>
